@@ -4,7 +4,7 @@
     "src/default/assets/js/src/~bootstrap.ts"
   ],
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "amd",
     "declaration": false,
     "skipLibCheck": true,
