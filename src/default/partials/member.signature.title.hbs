@@ -1,10 +1,10 @@
 {{#compact}}
-    {{#unless hideName}}{{{wbr name}}}{{/unless}}
+    {{#unless hideName}}{{{wbr (formatDisplayName name)}}}{{/unless}}
     {{#if typeParameters}}
         &lt;
         {{#each typeParameters}}
             {{#if @index}},&nbsp;{{/if}}
-            {{name}}
+            {{formatDisplayName name}}
         {{/each}}
         &gt;
     {{/if}}
@@ -12,7 +12,7 @@
     {{#each parameters}}
         {{#if @index}},&nbsp;{{/if}}
         {{#if flags.isRest}}<span class="tsd-signature-symbol">...</span>{{/if}}
-        {{name}}
+        {{formatDisplayName name}}
         <span class="tsd-signature-symbol">
             {{#if flags.isOptional}}?{{/if}}
             {{#if defaultValue}}?{{/if}}

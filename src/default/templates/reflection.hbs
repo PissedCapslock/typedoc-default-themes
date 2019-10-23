@@ -55,7 +55,7 @@
         <div class="tsd-signature tsd-kind-icon">{{#compact}}
             <span class="tsd-signature-symbol">[</span>
             {{#each model.indexSignature.parameters}}
-                {{name}}:&nbsp;{{#with type}}{{>type}}{{/with}}
+                {{formatDisplayName name}}:&nbsp;{{#with type}}{{>type}}{{/with}}
             {{/each}}
             <span class="tsd-signature-symbol">]:&nbsp;</span>
             {{#with model.indexSignature.type}}{{>type}}{{/with}}

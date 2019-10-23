@@ -7,18 +7,18 @@
                 <section class="tsd-index-section {{cssClasses}}">
                     {{#if categories}}
                         {{#each categories}}
-                            <h3>{{#if title}}{{title}} {{/if}}{{../title}}</h3>
+                            <h3>{{#if title}}{{formatDisplayName title}} {{/if}}{{formatDisplayName ../title}}</h3>
                             <ul class="tsd-index-list">
                                 {{#each children}}
-                                    <li class="{{cssClasses}}"><a href="{{relativeURL url}}" class="tsd-kind-icon">{{#if name}}{{{wbr name}}}{{else}}<em>{{{wbr kindString}}}</em>{{/if}}</a></li>
+                                    <li class="{{cssClasses}}"><a href="{{relativeURL url}}" class="tsd-kind-icon">{{#if name}}{{{wbr (formatDisplayName name)}}}{{else}}<em>{{{wbr (formatDisplayName kindString)}}}</em>{{/if}}</a></li>
                                 {{/each}}
                             </ul>
                         {{/each}}
                     {{else}}
-                        <h3>{{title}}</h3>
+                        <h3>{{formatDisplayName title}}</h3>
                         <ul class="tsd-index-list">
                             {{#each children}}
-                                <li class="{{cssClasses}}"><a href="{{relativeURL url}}" class="tsd-kind-icon">{{#if name}}{{{wbr name}}}{{else}}<em>{{{wbr kindString}}}</em>{{/if}}</a></li>
+                                <li class="{{cssClasses}}"><a href="{{relativeURL url}}" class="tsd-kind-icon">{{#if name}}{{{wbr (formatDisplayName name)}}}{{else}}<em>{{{wbr (formatDisplayName kindString)}}}</em>{{/if}}</a></li>
                             {{/each}}
                         </ul>
                     {{/if}}

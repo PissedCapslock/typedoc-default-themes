@@ -1,7 +1,7 @@
 {{#if categories}}
     {{#each categories}}
         <section class="tsd-panel-group tsd-member-group {{cssClasses}}">
-            <h2>{{#if title}}{{title}} {{/if}}{{../title}}</h2>
+            <h2>{{#if title}}{{formatDisplayName title}} {{/if}}{{formatDisplayName ../title}}</h2>
             {{#each children}}
                 {{#unless hasOwnDocument}}
                     {{> member}}
@@ -11,7 +11,7 @@
     {{/each}}
 {{else}}
     <section class="tsd-panel-group tsd-member-group {{cssClasses}}">
-        <h2>{{title}}</h2>
+        <h2>{{formatDisplayName title}}</h2>
         {{#each children}}
             {{#unless hasOwnDocument}}
                 {{> member}}

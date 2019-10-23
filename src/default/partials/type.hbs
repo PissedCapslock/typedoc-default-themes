@@ -2,7 +2,7 @@
     {{#if reflection}}
         {{#compact}}
             <a href="{{relativeURL reflection.url}}" class="tsd-signature-type">
-                {{reflection.name}}
+                {{formatDisplayName reflection.name}}
             </a>
             {{#if typeArguments}}
                 <span class="tsd-signature-symbol">&lt;</span>
@@ -53,7 +53,7 @@
                     {{#compact}}
                         <span class="tsd-signature-type">
                             {{#if name}}
-                                {{name}}
+                                {{formatDisplayName name}}
                             {{else}}
                                 {{#if value}}
                                     "{{value}}"
