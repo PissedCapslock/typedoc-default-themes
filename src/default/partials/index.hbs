@@ -1,28 +1,39 @@
 {{#if groups}}
 <section class="tsd-panel-group tsd-index-group">
-    <h2>Index</h2>
+    <h2>Overview</h2>
     <section class="tsd-panel tsd-index-panel">
         <div class="tsd-index-content">
             {{#each groups}}
-                <section class="tsd-index-section {{cssClasses}}">
-                    {{#if categories}}
-                        {{#each categories}}
-                            <h3>{{#if title}}{{formatDisplayName title}} {{/if}}{{formatDisplayName ../title}}</h3>
+                {{#ifCond title '==' 'External modules' }}
+                    {{#each children}}
+                        <h3 class="{{cssClasses}}"><a href="{{relativeURL url}}" class="tsd-kind-icon">{{{formatDisplayName name}}}</a></h3>
+                        <ul class="tsd-index-list">
+                            {{#each children}}
+                                <li class="{{cssClasses}}"><a href="{{relativeURL url}}" class="tsd-kind-icon">{{{wbr (formatDisplayName name)}}}</a></li>
+                            {{/each}}
+                        </ul>
+                    {{/each}}
+                {{else}}
+                    <section class="tsd-index-section {{cssClasses}}">
+                        {{#if categories}}
+                            {{#each categories}}
+                                <h3>{{#if title}}{{formatDisplayName title}} {{/if}}{{formatDisplayName ../title}}</h3>
+                                <ul class="tsd-index-list">
+                                    {{#each children}}
+                                        <li class="{{cssClasses}}"><a href="{{relativeURL url}}" class="tsd-kind-icon">{{#if name}}{{{wbr (formatDisplayName name)}}}{{else}}<em>{{{wbr (formatDisplayName kindString)}}}</em>{{/if}}</a></li>
+                                    {{/each}}
+                                </ul>
+                            {{/each}}
+                        {{else}}
+                            <h3>{{formatDisplayName title}}</h3>
                             <ul class="tsd-index-list">
                                 {{#each children}}
                                     <li class="{{cssClasses}}"><a href="{{relativeURL url}}" class="tsd-kind-icon">{{#if name}}{{{wbr (formatDisplayName name)}}}{{else}}<em>{{{wbr (formatDisplayName kindString)}}}</em>{{/if}}</a></li>
                                 {{/each}}
                             </ul>
-                        {{/each}}
-                    {{else}}
-                        <h3>{{formatDisplayName title}}</h3>
-                        <ul class="tsd-index-list">
-                            {{#each children}}
-                                <li class="{{cssClasses}}"><a href="{{relativeURL url}}" class="tsd-kind-icon">{{#if name}}{{{wbr (formatDisplayName name)}}}{{else}}<em>{{{wbr (formatDisplayName kindString)}}}</em>{{/if}}</a></li>
-                            {{/each}}
-                        </ul>
-                    {{/if}}
-                </section>
+                        {{/if}}
+                    </section>
+                {{/ifCond}}                
             {{/each}}
         </div>
     </section>
