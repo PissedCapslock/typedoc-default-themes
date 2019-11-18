@@ -10,7 +10,6 @@ module.exports = {
         if (value.endsWith('.d')){
             value = value.substring(0, value.length - '.d'.length);
         }
-        value = value.replace('main/javascript/', '');
         return value;
     }
   }
