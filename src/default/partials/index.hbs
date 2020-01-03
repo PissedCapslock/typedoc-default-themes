@@ -6,12 +6,14 @@
             {{#each groups}}
                 {{#ifCond title '==' 'External modules' }}
                     {{#each children}}
-                        <h3 class="{{cssClasses}}"><a href="{{relativeURL url}}" class="tsd-kind-icon">{{{formatDisplayName name}}}</a></h3>
-                        <ul class="tsd-index-list">
-                            {{#each children}}
-                                <li class="{{cssClasses}}"><a href="{{relativeURL url}}" class="tsd-kind-icon">{{{wbr (formatDisplayName name)}}}</a></li>
-                            {{/each}}
-                        </ul>
+                        {{#ifCond children.length '>' 0}}
+                            <h3 class="{{cssClasses}}"><a href="{{relativeURL url}}" class="tsd-kind-icon">{{{formatDisplayName name}}}</a></h3>
+                            <ul class="tsd-index-list">
+                                {{#each children}}
+                                    <li class="{{cssClasses}}"><a href="{{relativeURL url}}" class="tsd-kind-icon">{{{wbr (formatDisplayName name)}}}</a></li>
+                                {{/each}}
+                            </ul>
+                        {{/ifCond}}
                     {{/each}}
                 {{else}}
                     <section class="tsd-index-section {{cssClasses}}">
