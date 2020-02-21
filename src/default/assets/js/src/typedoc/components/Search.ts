@@ -102,7 +102,14 @@ namespace typedoc.search
         function batch() {
             var cycles = 0;
             while (cycles++ < 100) {
-                builder.add(rows[pos]);
+                var item = rows[pos];
+                if(item.name){
+                    item.name = cleanUpName(item.name);
+                }
+                if(item.parent){
+                    item.parent = cleanUpName(item.parent);
+                }
+                builder.add(item);
                 if (++pos == length) {
                     index = builder.build();
                     return setLoadingState(SearchLoadingState.Ready);
@@ -114,6 +121,21 @@ namespace typedoc.search
         batch();
     }
 
+    /**
+     * When using the definition files to generate the Typedoc, the names of all modules are 
+     * <code>"path/to/module.d"</code>.
+     * This method will strip the quotes and the .d from it
+     * @param name The name
+     */
+    function cleanUpName(name: string): string{
+        if(name.startsWith('"')){
+            const index = name.indexOf('.d"');
+            if(index > 0){
+                return name.substring(1, index) + name.substring(index + '.d"'.length);
+            }
+        }
+        return name;
+    }
 
     /**
      * Lazy load the search index and parse it.
