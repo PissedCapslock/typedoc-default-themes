@@ -29,7 +29,7 @@
     {{#if setter}}
         {{! Copied from type.hbs. Workaround for https://github.com/TypeStrong/typedoc/issues/1215}}
         <span class="tsd-signature-type">void</span>
-    {{#else}}
+    {{else}}
         {{#with type}}
             {{>type}}
         {{/with}}
