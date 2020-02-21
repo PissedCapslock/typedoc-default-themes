@@ -26,7 +26,14 @@
     {{else}}
         <span class="tsd-signature-symbol">: </span>
     {{/if}}
-    {{#with type}}
-        {{>type}}
-    {{/with}}
+    {{#if setter}}
+        {{! Copied from type.hbs. Workaround for https://github.com/TypeStrong/typedoc/issues/1215}}
+        <span class="tsd-signature-type">void</span>
+    {{/if}}
+    {{#else}}
+        {{#with type}}
+            {{>type}}
+        {{/with}}
+    {{/else}}
+
 {{/if}}
